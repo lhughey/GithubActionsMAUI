@@ -43,13 +43,13 @@ jobs:
           dotnet workload install maui --ignore-failed-sources
 
       - name: Restore Dependencies
-        run: dotnet restore src/GithubActionsMAUI/GithubActionsMAUI.csproj
+        run: dotnet restore /GithubActionsMAUI/GithubActionsMAUI.csproj
 
       - name: Build MAUI Android
-        run: dotnet build src/GithubActionsMAUI/GithubActionsMAUI.csproj -c Release -f net8.0-android --no-restore
+        run: dotnet build /GithubActionsMAUI/GithubActionsMAUI.csproj -c Release -f net8.0-android --no-restore
 
       - name: Upload Android Artifact
         uses: actions/upload-artifact@v2.3.1
         with:
           name: android-ci-build
-          path: src/GithubActionsMAUI/bin/Release/net8.0-android/*Signed.a*
+          path: /GithubActionsMAUI/bin/Release/net8.0-android/*Signed.a*
